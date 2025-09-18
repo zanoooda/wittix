@@ -163,3 +163,20 @@ go fmt ./...
 
 ## License
 MIT (or as you prefer)
+
+examples to test
+
+ok
+url -s -X POST localhost:8080/jobs \
+  -H 'Content-Type: application/json' \
+  -d '{"payload":"sleep:1s","timeout":5,"maxRetry":0}' | jq
+
+fail
+curl -s -X POST localhost:8080/jobs \
+  -H 'Content-Type: application/json' \
+  -d '{"payload":"fail","timeout":5,"maxRetry":3}' | jq
+
+fail
+curl -s -X POST localhost:8080/jobs \
+  -H 'Content-Type: application/json' \
+  -d '{"payload":"sleep:2s","timeout":1,"maxRetry":1}' | jq
